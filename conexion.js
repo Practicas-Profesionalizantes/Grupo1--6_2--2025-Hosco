@@ -8,7 +8,6 @@ const sql = mysql.createPool({
 })
 
 /**
- * Función que crea pedidos.
  * @param {int} idUser - Lista que contiene los Ids.
  * @param {list[idsProductos]} productoIds - Lista que contiene los Ids.
  * @param {list[cantidades]} cantidades - Lista que contiene los Ids.
@@ -17,17 +16,29 @@ const sql = mysql.createPool({
  */
 async function crearPedido(idUser, productoIds, cantidades, metodoDePago){
 
-    let preciosUnitarios = []
+    let preciosUnitarios = [] 
     let subTotales = []
+    let total
 
-    for(id of productoIds){
-        precio = await sql.query('SELECT precio FROM stockInv WHERE id = 2')
+    for(let x = 0; x < productoIds.length; x++){
+        
+        precio = await sql.query(`SELECT precio FROM stockInv WHERE id = ${productoIds[x]}`)
         preciosUnitarios.push(precio[0][0]['precio'])
+        subTotales.push((precio[0][0]['precio'] * cantidades[x]))
+        total =+ subTotales[x] 
+
     }
 
-    sql.query(`INSERT INTO pedidos (idUser, idsPrendas, cantidades, metodoDePago, precioUnitario, subtotal, total) VALUES (${idUser}, ${productoIds}, ${cantidades}, ${metodoDePago}, ${preciosUnitarios}, ${subTotales}, ${total}));`)
+    sql.query(`INSERT INTO pedidos (idUser, idsPrendas, cantidades, metodoDePago, precioUnitarios, subtotales, total) VALUES (${idUser}, "${productoIds}", "${cantidades}", "${metodoDePago}", "${preciosUnitarios}", "${subTotales}", ${total});`)
 
-    
+}
+
+
+/**
+ * @param
+ * @return
+ */
+async function registrarPrenda(){
 
 }
 
