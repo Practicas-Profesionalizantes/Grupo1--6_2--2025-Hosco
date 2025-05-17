@@ -8,8 +8,8 @@ CREATE TABLE usuarios (
     passw VARCHAR(55),
     correo VARCHAR(55),
     telefono VARCHAR(55),
-    enviarInfo INT(1),
-    rol VARCHAR(10),
+    enviarInfo INT(1) default 0,
+    rol VARCHAR(10) default 'user',
     PRIMARY KEY (id)
 );
 
@@ -20,10 +20,10 @@ CREATE TABLE stockInv (
     rutaImg TEXT(350),
     talle TEXT(3),
     precio DOUBLE(8, 2),
-    stockDisponible INT(3),
-    stockReservado INT(3),
-    stockEnPedido INT(3),
-    mostrar INT(1),
+    stockDisponible INT(3) default 0,
+    stockReservado INT(3) default 0,
+    stockEnPedido INT(3) default 0,
+    mostrar INT(1) default 0,
     PRIMARY KEY (id)
 );
 
