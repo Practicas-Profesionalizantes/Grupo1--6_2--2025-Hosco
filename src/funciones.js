@@ -47,9 +47,12 @@ async function registrarPrenda(nombre, descripcion, rutaImg, talle, precio){
 //Funcion completa.
 async function eliminarPrenda(idPrenda){
 
-    const results = await sql.query(`DELETE FROM stockInv WHERE id = ${idPrenda};`)
-    console.log(results[0])
-    //const result = results[0]
+    let results = await sql.query(`DELETE FROM stockInv WHERE id = ${idPrenda};`)
+    const result = results[0]['affectedRows']
+    if(result != 0){
+        return 1}
+    else{
+        return 0}
 
 }
 
