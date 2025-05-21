@@ -22,8 +22,8 @@ async function crearPedido(idUser, productoIds, cantidades, metodoDePago){
         total =+ subTotales[x] 
 
     }
-
-    sql.query(`INSERT INTO pedidos (idUser, idsPrendas, cantidades, metodoDePago, precioUnitarios, subtotales, total) VALUES (${idUser}, "${productoIds}", "${cantidades}", "${metodoDePago}", "${preciosUnitarios}", "${subTotales}", ${total});`)
+    
+    sql.query(`INSERT INTO pedidos (idUser, idsPrendas, cantidades, metodoDePago, precioUnitarios, subtotales, total) VALUES (${idUser}, '${productoIds}', '${cantidades}', '${metodoDePago}', '${preciosUnitarios}', '${subTotales}', ${total});`)
 
 }
 
@@ -42,7 +42,7 @@ async function registrarPrenda(nombre, descripcion, rutaImg, talle, precio){
 
 /**
  * @param {int} idPrenda - Id de la prenda a eliminar.
- * @return No devuelve nada.
+ * @return Devuelve 1 si se borro la prenda
  */
 //Funcion completa.
 async function eliminarPrenda(idPrenda){
@@ -56,6 +56,23 @@ async function eliminarPrenda(idPrenda){
 
 }
 
+/**
+ * @param {string} nombre - Nombre del material.,
+ * @param {string} descripcion - Descripcion del material.,
+ * @param {string} rutaImg - Ruta donde se encuentra la imagen del material.,
+ * @param {int} stock - Cant de de stock del material.,
+ * @return Devuelve 1 si se registro la materia
+ */
+async function registrarMaterial(nombre, descripcion, rutaImg, stock){ 
+
+    let results = await sql.query(`INSERT INTO stockMat (nombre, descripcion, rutaImg, stock) VALUES ('${nombre}', '${descripcion}', '${rutaImg}', ${stock});`)
+    const result = results[0]['affectedRows']
+    if(result != 0){
+        return 1}
+    else{
+        return 0}
+
+}
 
 /**
  * @param {int} idPrenda - Id de la prenda a modificar.
@@ -64,4 +81,4 @@ function modificarPrenda(idsPrendas) {
     
 }
 
-module.exports = { crearPedido, eliminarPrenda }
+module.exports = { crearPedido, eliminarPrenda, registrarMaterial }
