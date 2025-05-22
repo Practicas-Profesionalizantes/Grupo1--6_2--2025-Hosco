@@ -29,7 +29,7 @@ CREATE TABLE stockInv (
 
 CREATE TABLE usuariosInv (
     id INT(11) AUTO_INCREMENT,
-    usuarios VARCHAR(35),
+    usuario VARCHAR(35),
     passw VARCHAR(55),
     nombre VARCHAR(35),
     telefono VARCHAR(55),
@@ -91,3 +91,4 @@ INSERT INTO stockInv (nombre, descripcion, rutaImg, talle, precio, stockDisponib
 INSERT INTO stockInv (nombre, descripcion, rutaImg, talle, precio, stockDisponible, stockReservado, stockEnPedido, mostrar) values("c","-","-","-",16.9,13,0,0,1);
 INSERT INTO stockInv (nombre, descripcion, rutaImg, talle, precio, stockDisponible, stockReservado, stockEnPedido, mostrar) values("d","-","-","-",17.9,12,0,0,1);
 INSERT INTO stockInv (nombre, descripcion, rutaImg, talle, precio, stockDisponible, stockReservado, stockEnPedido, mostrar) values("e","-","-","-",18.9,11,0,0,1);
+INSERT INTO usuariosInv (usuario, passw, nombre, telefono) values ("user","1234","-","-")

@@ -47,6 +47,8 @@ async function registrarPrenda(nombre, descripcion, rutaImg, talle, precio){
 //Funcion completa.
 async function eliminarPrenda(idPrenda){
 
+    console.log('hola')
+
     let results = await sql.query(`DELETE FROM stockInv WHERE id = ${idPrenda};`)
     const result = results[0]['affectedRows']
     if(result != 0){
@@ -72,6 +74,7 @@ async function registrarMaterial(nombre, descripcion, rutaImg, stock){
     else{
         return 0}
 
+        
 }
 
 /**
@@ -88,14 +91,12 @@ function modificarPrenda(idsPrendas) {
 async function iniciarSesion(username, password){
 
     if(username.indexOf(' ') != -1 || password.indexOf(' ') != -1){
-        console.log('no')
+        return 0
     }else{
-        let result = await sql.query(`SELECT id FROM usuariosInv WHERE usuarios = 'user' AND passw = 1234`)
-        console.log(result[0][0]['id'])
+        let result = await sql.query(`SELECT id FROM usuariosInv WHERE usuario = 'user' AND passw = 1234`)
+        return "Este usuario existe con este Id: " + result[0][0]['id']
     }
 
 }
 
-iniciarSesion('user', '12 34')
-
-//module.exports = { crearPedido, eliminarPrenda, registrarMaterial, iniciarSesion }
+module.exports = { crearPedido, eliminarPrenda, registrarMaterial, iniciarSesion }

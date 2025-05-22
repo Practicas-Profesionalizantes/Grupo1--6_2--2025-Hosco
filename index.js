@@ -1,4 +1,4 @@
-const { crearPedido, eliminarPrenda, registrarMaterial } =  require('./src/funciones.js')
+const { crearPedido, eliminarPrenda, registrarMaterial, iniciarSesion } =  require('./src/funciones.js')
 const express = require('express')
 const path = require('path');
 const exp = express()   
@@ -13,6 +13,7 @@ exp.use(express.json())
 exp.post('/eliminar-prenda', async (req, res) => {
     const idPrenda = req.body['idPrenda']
     let result = await eliminarPrenda(idPrenda)
+    console.log('aca estoy')
     
     // res -> devuelve a la aplicacion la confirmacion de que sucedio con la accion
 })
@@ -25,6 +26,13 @@ exp.post('/registrar-materia', async (req, res) => {
     let result = await registrarMaterial(nombre, descripcion, rutaImg, stock)
 
     // res -> devuelve a la aplicacion la confirmacion de que sucedio con la accion
+})
+
+exp.post('/login', async (req, res) => {
+    const user = req.body['username']
+    const passw = req.body['password']
+    let result = await iniciarSesion(user, passw)
+    console.log(result)
 })
 
 exp.listen(port, () => {
