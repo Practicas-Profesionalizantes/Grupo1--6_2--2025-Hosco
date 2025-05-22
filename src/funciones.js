@@ -81,4 +81,21 @@ function modificarPrenda(idsPrendas) {
     
 }
 
-module.exports = { crearPedido, eliminarPrenda, registrarMaterial }
+/**
+ * @param {string} username - Nombre de usuario de la cuenta del equipo
+ * @param {string} password - Nombre de usuario de la cuenta del equipo
+ */
+async function iniciarSesion(username, password){
+
+    if(username.indexOf(' ') != -1 || password.indexOf(' ') != -1){
+        console.log('no')
+    }else{
+        let result = await sql.query(`SELECT id FROM usuariosInv WHERE usuarios = 'user' AND passw = 1234`)
+        console.log(result[0][0]['id'])
+    }
+
+}
+
+iniciarSesion('user', '12 34')
+
+//module.exports = { crearPedido, eliminarPrenda, registrarMaterial, iniciarSesion }
