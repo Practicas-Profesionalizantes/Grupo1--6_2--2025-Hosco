@@ -1,98 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Electron</title>
+    
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        background-color: #7c6868;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .log-square {
-        overflow: visible;
-        position: relative;
-        background-color: #d66868;
-        width: 42vh;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border-top-right-radius: 10vh;
-        border-top-left-radius: 10vh;
-        border-bottom-right-radius: 5vh;
-        border-bottom-left-radius: 5vh;
-        border: 0.1vh solid #8f8b8b;
-        box-shadow: 0vh 0vh 20050vh 1vh #000000;
-      }
-      .user-icon-square {
-        background-color: #c9a6a6;
-        border-radius: 50%;
-        padding: 1vh;
-        position: absolute;
-        width: 12vh;
-        height: 12vh;
-        top: -6vh;
-      }
-      .form-log {
-        display: flex;
-      }
-      .log-form {
-        height: auto;
-        align-content: center;
-      }
-      .log-form div {
-        margin-block-start: 8vh;
-        width: 32vh;
-        display: flex;
-      }
-      .log-form div input {
-        width: 75%;
-        padding: 1vh;
-        border-radius: 1.1vh;
-        border: 0;
-      }
-      #log-button {
-        padding: 1vh;
-        padding-inline: 5vh;
-        border-radius: 2vh;
-        justify-self: center;
-        border: 0;
-      }
-      .testo {
-        margin-top: 8vh;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #7c6868;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .log-square {
+            overflow: visible;
+            position: relative;
+            background-color: #d66868;
+            width: 42vh;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-top-right-radius: 10vh;
+            border-top-left-radius: 10vh;
+            border-bottom-right-radius: 5vh;
+            border-bottom-left-radius: 5vh;
+            border: 0.1vh solid #8f8b8b;
+            box-shadow: 0vh 0vh 20050vh 1vh #000000;
+        }
+
+        .user-icon-square {
+            background-color: #c9a6a6;
+            border-radius: 50%;
+            padding: 1vh;
+            position: absolute;
+            width: 12vh;
+            height: 12vh;
+            top: -6vh;
+        }
+
+        .form-log {
+            display: flex;
+        }
+
+        .log-form {
+            height: auto;
+        }
+
+        .log-form div {
+            margin-block: 6vh;
+            width: 32vh;
+            display: flex;
+        }
+
+        .log-form div input {
+            width: 90%;
+            padding: 1vh;
+            border: 0;
+            border-bottom-right-radius: 1.1vh;
+            border-bottom-left-radius: 0.5vh;
+            border-top-right-radius: 1.1vh;
+            border-top-left-radius: 0.5vh;
+        }
+
+        #log-button {
+            padding: 1vh;
+            padding-inline: 5vh;
+            border-radius: 2vh;
+            justify-self: center;
+            border: 0;
+        }
+
+        .testo {
+            margin-top: 8vh;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="log-square">
-      <img class="user-icon-square" src="user-line.png" alt="user-line-icon" />
-      <div class="testo">
-        <h3>--- Inicia Sesion ---</h3>
-      </div>
-      <div class="form-log">
-        <form method="post" action="" class="log-form">
-          <div class="input-user">
-            <img class="user-icon-input" src="user-icon.png" alt="" style="width: 3.5vh;" />
-            <input type="text" name="username" placeholder="Username" required/>
-          </div>
-          <div class="input-passw">
-            <img class="passw-icon-input" src="passw-icon.png" alt="" style="width: 3.5vh;"/>
-            <input type="text" name="password" placeholder="Password" required/>
-          </div>
-          <div style="margin-block: 4vh">
-            <button id="log-button" type="submit" onclick="console.log('alo')">Login</button>
-          </div>
-        </form>
-      </div>
+        <img class="user-icon-square" src="user-line.png" alt="user-line-icon" />
+        <div class="testo">
+            <h3> --- Inicia Sesion --- </h3>
+        </div>
+        <div class="form-log">
+            <div class="log-form">
+                <div class="input-user">
+                    <img class="user-icon-input" src="user-icon.png" alt=""
+                        style="width: 3.5vh; margin-right: 0.5vh;" />
+                    <input type="text" id="username" name="username" placeholder="Username" required />
+                </div>
+                <div class="input-passw">
+                    <img class="passw-icon-input" src="passw-icon.png" alt=""
+                        style="width: 3.5vh; margin-right: 0.5vh;" />
+                    <input type="text" id="password" name="password" placeholder="Password" required />
+                </div>
+                <div style="margin-block: 4vh; justify-content: end;">
+                    <button id="log-button" onclick="login()">Login</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </body>
+    <script>
+
+        const username = document.getElementById('username')
+        const passw = document.getElementById('password')
+
+        const login = () => {
+            fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }, body: JSON.stringify({
+                username: username, //acceder a los values
+                password:  passw
+            })})
+            .then(response => response.json())
+            .then(data => console.log('Success:', data))
+        }
+    </script>
+</body>
+
 </html>

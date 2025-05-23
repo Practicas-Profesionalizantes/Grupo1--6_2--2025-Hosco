@@ -3,11 +3,15 @@ const path = require('path');
 
 const createWindow = () => {
     const window = new BrowserWindow({
-        width: 1000,
+        width: 1400,
         heigth: 800,
-        minWidth: 800,
-        minHeight: 600,
-        autoHideMenuBar: true
+        minWidth: 1400,
+        minHeight: 800,
+        autoHideMenuBar: true,
+        webPreferences: {
+            allowRunningInsecureContent: true,
+            Al
+        }
     })
     window.loadFile('index.html')
 }

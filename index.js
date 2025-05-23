@@ -1,7 +1,12 @@
-const { crearPedido, eliminarPrenda, registrarMaterial, iniciarSesion } =  require('./src/funciones.js')
+const { registrarMaterial } = require('./src/funciones.js')
+const { eliminarPrenda } = require('./src/funciones.js')
+const { iniciarSesion } = require('./src/funciones.js')
+const { crearPedido } = require('./src/funciones.js')
 const express = require('express')
+const cors = require('cors');
 const path = require('path');
 const exp = express()   
+
 const port = 3000
 
 console.clear()
@@ -9,6 +14,7 @@ console.clear()
 exp.use(express.static(path.join(__dirname)));
 exp.use(express.urlencoded({ extended: true }))
 exp.use(express.json())
+exp.use(cors())
 
 exp.post('/eliminar-prenda', async (req, res) => {
     const idPrenda = req.body['idPrenda']
@@ -29,10 +35,13 @@ exp.post('/registrar-materia', async (req, res) => {
 })
 
 exp.post('/login', async (req, res) => {
+    console.log(req.body)
     const user = req.body['username']
     const passw = req.body['password']
     let result = await iniciarSesion(user, passw)
-    console.log(result)
+    
+    res.send(result)
+
 })
 
 exp.listen(port, () => {
