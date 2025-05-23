@@ -35,12 +35,15 @@ exp.post('/registrar-materia', async (req, res) => {
 })
 
 exp.post('/login', async (req, res) => {
-    console.log(req.body)
     const user = req.body['username']
     const passw = req.body['password']
     let result = await iniciarSesion(user, passw)
     
-    res.send(result)
+    if (result == 1) {
+        res.json({ status: '200' });
+    } else {
+        res.json({ status: '404' });
+    }
 
 })
 

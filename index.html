@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Electron</title>
-    
     <style>
         * {
             margin: 0;
@@ -111,8 +110,8 @@
     </div>
     <script>
 
-        const username = document.getElementById('username')
-        const passw = document.getElementById('password')
+        let username = document.getElementById('username')
+        let passw = document.getElementById('password')
 
         const login = () => {
             fetch('http://localhost:3000/login', {
@@ -120,8 +119,8 @@
             headers: {
                 'Content-Type': 'application/json'
             }, body: JSON.stringify({
-                username: username, //acceder a los values
-                password:  passw
+                username: username.value,
+                password:  passw.value
             })})
             .then(response => response.json())
             .then(data => console.log('Success:', data))

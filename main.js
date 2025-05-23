@@ -10,7 +10,6 @@ const createWindow = () => {
         autoHideMenuBar: true,
         webPreferences: {
             allowRunningInsecureContent: true,
-            Al
         }
     })
     window.loadFile('index.html')

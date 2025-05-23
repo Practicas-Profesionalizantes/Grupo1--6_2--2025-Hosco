@@ -90,11 +90,22 @@ function modificarPrenda(idsPrendas) {
  */
 async function iniciarSesion(username, password){
 
+    username = username + ""
+    password = password + ""
+
     if(username.indexOf(' ') != -1 || password.indexOf(' ') != -1){
         return 0
     }else{
-        let result = await sql.query(`SELECT id FROM usuariosInv WHERE usuario = 'user' AND passw = 1234`)
-        return "Este usuario existe con este Id: " + result[0][0]['id']
+        let result = await sql.query(`SELECT id FROM usuariosInv WHERE usuario = '${username}' AND passw = '${password}'`)
+        try {
+            if (result[0][0]['id']){
+                console.log(result[0][0]['id'])
+                return 1
+            }
+        } catch (error) {
+            return 0
+        }
+        
     }
 
 }
