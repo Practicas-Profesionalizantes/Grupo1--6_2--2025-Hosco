@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+TC&display=swap');
+
+.navbar {
+  font-family: 'WDXL Lubrifont TC', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: sans-serif;
+}
+header {
+  background-color: #555;
+  color: white;
+  padding: 15px 20px;
+}
+
+.navbar {
+  display: flex;
+  width: 100%;
+  background-color: #555;
+  align-items: center;
+}
+
+.navbar ul {
+  display: flex;
+  margin: 0 auto;
+  list-style: none;
+  gap: 2vh;
+}
+
+.navbar li {
+  display: flex;
+  padding: 8px 16px;
+  background-color: #666;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 140%;
+}
+
+.navbar li.active {
+  background-color: #222;
+}
+
+.auth-buttons {
+  display: inline-block;
+
+}
+
+.auth-buttons button {
+  padding: 6px 12px;
+  border: none;
+  background-color: #ccc;
+  border-radius: 8px;
+  cursor: pointer;  
+  font-family: 'WDXL Lubrifont TC';
+  font-size: 110%;
+}
+
+/* ---------Carrousel--------- */
+.carousel-custom {
+  width: 100%;
+  max-height: 220px;
+  overflow: hidden;
+  background-color: #f8f9fa; /* color claro como el del prototipo */
+}
+
+.carousel-content {
+  height: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.product-img {
+  height: 100px;
+  object-fit: contain;
+  margin: 0 10px;
+  transition: transform 0.3s ease;
+}
+
+.product-img:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .product-img {
+    height: 70px;
+    margin: 5px;
+  }
+
+  .carousel-custom {
+    max-height: 240px;
+  }
+}
+/* --------- Fin Carrousel--------- */
+
+/* Responsive: menor altura en móviles */
+@media (max-width: 768px) {
+  .carousel-inner img {
+    height: 250px;
+  }
+
+  .carousel-caption {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}

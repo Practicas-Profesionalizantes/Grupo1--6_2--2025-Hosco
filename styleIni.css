@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+TC&display=swap');
+
+.navbar {
+  font-family: 'WDXL Lubrifont TC', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+/* ----------- HEADER ----------- */
+header {
+  background-color: #555;
+  color: white;
+  padding: 15px 20px;
+}
+
+.navbar {
+  display: flex;
+  width: 100%;
+  background-color: #555;
+  align-items: center;
+}
+
+.navbar ul {
+  display: flex;
+  margin: 0 auto;
+  list-style: none;
+  gap: 2vh;
+}
+
+.navbar li {
+  display: flex;
+  padding: 8px 16px;
+  background-color: #666;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 140%;
+}
+
+.navbar li.active {
+  background-color: #222;
+}
+
+.auth-buttons {
+  display: inline-block;
+
+}
+
+.auth-buttons button {
+  padding: 6px 12px;
+  border: none;
+  background-color: #ccc;
+  border-radius: 8px;
+  cursor: pointer;  
+  font-family: 'WDXL Lubrifont TC';
+  font-size: 110%;
+}
+
+/* ----------- MAIN CONTENT ----------- */
+.main-content {
+  display: flex;
+  gap: 20px;
+}
+
+/* ----------- GALLERY ----------- */
+.gallery {
+ display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 15px;
+  padding: 20px;
+  background-color: white;
+  flex: 3;
+}
+.image-box {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background-color: #f4f4f4;
+  border: 2px solid black;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+  border-radius: 1vh;
+}
+
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+
+
+.image-box::before,
+.image-box::after {
+  content: "⌜";
+  position: absolute;
+  font-size: 2rem; 
+  color: black;
+  line-height: 1;
+}
+
+.image-box::before {
+  top: 5px;
+  left: 5px;
+}
+
+.image-box::after {
+  bottom: 5px;
+  right: 5px;
+  transform: rotate(180deg);
+}
+
+/* ----------- SIDEBAR ----------- */
+.sidebar {
+  width: 20%;
+  height: 100%;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 120px;
+  justify-content: space-between;
+  min-width: 150px;
+  max-width: 300px;
+  background-color: #ddd;
+  padding: 10px;
+  display: flex;
+  flex: 1; 
+  overflow-y: auto;
+  transition: all 0.3s ease;
+}
+
+.sidebar-item {
+  background-color: #eee;
+  height: 30%;
+  border-radius: 5%;
+}
+
+/* ----------- RESPONSIVE DESIGN ----------- */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-content {
+    display: flex;
+    flex-grow: 1;
+    min-height: 0;
+    flex-wrap: wrap;
+    margin-left: 0;
+  }
+
+  .gallery {
+    flex: 3;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 200px);
+    gap: 10px;
+    background-color: white;
+    padding: 20px;
+    min-width: 0;
+  }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .sidebar-item {
+    background-color: #eee;
+    height: 100px;
+  }
+
+  .main-content {
+    flex-direction: column;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .sidebar-item {
+    flex: 1 1 45%;
+    height: 100px;
+  }
+}
+
+aside.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background-color: #8f8f8f;
+  height: 89vh;
+}
+/* ----------- image-box ----------- */
+
+.image-box img,
+.sidebar-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 1vh;
+}
+
+/* ----------- footer ----------- */
+.footer {
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 15px 10px;
+  font-size: 14px;
+  flex-shrink: 0;
+
+}
+@media (max-width: 768px) {
+  
+}

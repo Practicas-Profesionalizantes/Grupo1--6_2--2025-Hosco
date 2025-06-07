@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styleRopa.css">
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS (al final del <body>) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+    <header>
+    <nav class="navbar">
+      <ul class="nav-menu">
+        <li class="active">Inicio</li>
+        <li>Ropa</li>
+        <li>Nosotros</li>
+        <li>Vida</li>
+      </ul>
+      <div class="auth-buttons">
+        <button>Login</button>
+        <button>Sign in</button>
+      </div>
+    </nav>
+  </header>
+  <main>
+<div id="topProductsCarousel" class="carousel slide carousel-custom" data-bs-ride="carousel">
+  <div class="carousel-inner">
+
+    <div class="carousel-item active">
+      <div class="bg-light text-center py-4">
+        <div class="d-flex justify-content-center flex-wrap gap-3 mb-3">
+          <img src="img1.jpg" alt="Remera 1" class="product-img">
+          <img src="img1.jpg" alt="Remera 2" class="product-img">
+          <img src="img1.jpg" alt="Remera 3" class="product-img">
+          <img src="img1.jpg" alt="Remera 4" class="product-img">
+        </div>
+        <div class="text-warning fs-4 mb-2">★★★★★</div>
+        <p class="fw-semibold">¡Acá podés observar las favoritas del público!</p>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <div class="bg-light text-center py-4">
+        <div class="d-flex justify-content-center flex-wrap gap-3 mb-3">
+          <img src="img1.jpg" alt="Remera 5" class="product-img">
+          <img src="img1.jpg" alt="Remera 6" class="product-img">
+          <img src="img1.jpg" alt="Remera 7" class="product-img">
+          <img src="img1.jpg" alt="Remera 8" class="product-img">
+        </div>
+        <div class="text-warning fs-4 mb-2">★★★★☆</div>
+        <p class="fw-semibold">¡Estas también son muy valoradas por los clientes!</p>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#topProductsCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#topProductsCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+    <span class="visually-hidden">Siguiente</span>
+  </button>
+</div>
+
+
+  </main>
+</body>
+</html>
